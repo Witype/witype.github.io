@@ -1,0 +1,408 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>long text test | Typer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Witype">
+    
+
+    
+    <meta name="description" content="this is long text content test.123456789101112131415161718192021package open.witype.filetiper.custom;import android.content.Context;import android.graphics.Canvas;import android.graphics.Paint;import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="long text test">
+<meta property="og:url" content="http://yoursite.com/2015/05/14/long-text-test/index.html">
+<meta property="og:site_name" content="Typer">
+<meta property="og:description" content="this is long text content test.123456789101112131415161718192021package open.witype.filetiper.custom;import android.content.Context;import android.graphics.Canvas;import android.graphics.Paint;import">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="long text test">
+<meta name="twitter:description" content="this is long text content test.123456789101112131415161718192021package open.witype.filetiper.custom;import android.content.Context;import android.graphics.Canvas;import android.graphics.Paint;import">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Typer" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Typer" title="Typer"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Typer">Typer</a></h1>
+				<h2 class="blog-motto">Sample &amp; Faster</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/05/14/long-text-test/" title="long text test" itemprop="url">long text test</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Witype" target="_blank" itemprop="author">Witype</a>
+		
+  <p class="article-time">
+    <time datetime="2015-05-14T10:07:09.000Z" itemprop="datePublished"> 发表于 2015-05-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>this is long text content test.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package open.witype.filetiper.custom;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Canvas;</span><br><span class="line"><span class="keyword">import</span> android.graphics.Paint;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.view.VelocityTrackerCompat;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.view.ViewConfigurationCompat;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"><span class="keyword">import</span> android.view.MotionEvent;</span><br><span class="line"><span class="keyword">import</span> android.view.VelocityTracker;</span><br><span class="line"><span class="keyword">import</span> android.view.ViewConfiguration;</span><br><span class="line"><span class="keyword">import</span> android.view.animation.Interpolator;</span><br><span class="line"><span class="keyword">import</span> android.widget.Scroller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> open.witype.filetiper.R;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by Typer on 2015/5/9 0009.</span><br><span class="line"> * 承载内容的布局</span><br><span class="line"> */</span></span><br></pre></td></tr></table></figure></p>
+ <a id="more"></a>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AboveViewContent</span> <span class="keyword">extends</span> <span class="title">SlidingContentBase</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Scroller mScroller;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mLastX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mLastY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mDownX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SlidingMenuView.onSlidingStatusChanged menuListener;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> BehindViewContent behindContent;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 滑动的速度</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> VelocityTracker mVelocityTracker;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 系统定义最小滑动速度</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> minVelocity;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 系统定义最大滑动速度</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> maxVelocity;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 滑动的距离</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mFlingDistance;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 当前是否已经处于滑动状态</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isDraging;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> mIsUnableToDrag;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 系统定义了最小的滑动距离</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> mDefaultSlop;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     *</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> mScrollX;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> mCurItem;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Interpolator mInterpolator = <span class="keyword">new</span> Interpolator() &#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</span><br><span class="line">            input -= <span class="number">1.0</span>f;</span><br><span class="line">            <span class="keyword">return</span> input * input * input * input * input * input * input + <span class="number">1.0</span>f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AboveViewContent</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AboveViewContent</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        ViewConfiguration configuration = ViewConfiguration.get(context);</span><br><span class="line">        minVelocity = configuration.getScaledMinimumFlingVelocity();</span><br><span class="line">        maxVelocity = configuration.getScaledMaximumFlingVelocity();</span><br><span class="line">        mDefaultSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);</span><br><span class="line">        mScroller = <span class="keyword">new</span> Scroller(context, mInterpolator);</span><br><span class="line">        <span class="keyword">float</span> density = context.getResources().getDisplayMetrics().density;</span><br><span class="line">        mFlingDistance = (<span class="keyword">int</span>) (MIN_FLING_DISTATNCE * density);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> width = getDefaultSize(<span class="number">0</span>, widthMeasureSpec);</span><br><span class="line">        <span class="keyword">int</span> height = getDefaultSize(<span class="number">0</span>, heightMeasureSpec);</span><br><span class="line">        setMeasuredDimension(width, height);</span><br><span class="line">        <span class="keyword">int</span> contentWidth = getChildMeasureSpec(widthMeasureSpec, <span class="number">0</span>, width);</span><br><span class="line">        <span class="keyword">int</span> contentHeight = getChildMeasureSpec(heightMeasureSpec, <span class="number">0</span>, height);</span><br><span class="line">        mContent.measure(contentWidth, contentHeight);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">dispatchDraw</span><span class="params">(@NonNull Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.dispatchDraw(canvas);</span><br><span class="line">        Paint paint = <span class="keyword">new</span> Paint();</span><br><span class="line">        paint.setColor(getContext().getResources().getColor(R.color.divider));</span><br><span class="line">        <span class="keyword">int</span> left = getLeft() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = getLeft();</span><br><span class="line">        <span class="keyword">int</span> bottom = getHeight();</span><br><span class="line">        canvas.drawLine(left, top, right, bottom, paint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(@NonNull MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!isDraging &amp;&amp; !isTouchAllowed(event)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (mVelocityTracker == <span class="keyword">null</span>)</span><br><span class="line">            mVelocityTracker = VelocityTracker.obtain();</span><br><span class="line">        mVelocityTracker.addMovement(event);</span><br><span class="line">        <span class="keyword">int</span> action = event.getAction();</span><br><span class="line">        <span class="keyword">switch</span> (action) &#123;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">                mLastX = mDownX = event.getX();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">                /**</span><br><span class="line">                 * 如果之前的状态是没有在滑动</span><br><span class="line">                 * 现在开始滑动,对滑动开始检测</span><br><span class="line">                 */</span><br><span class="line">                <span class="keyword">if</span> (!isDraging) &#123;</span><br><span class="line">                    checkIsDraged(event);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (isDraging) &#123;</span><br><span class="line">                    <span class="keyword">float</span> xMove = event.getX();</span><br><span class="line">                    <span class="javadoc">/**</span><br><span class="line">                     * 计算移动距离</span><br><span class="line">                     * 向左移动正数</span><br><span class="line">                     * 向右移动为负数</span><br><span class="line">                     */</span></span><br><span class="line">                    <span class="keyword">float</span> xDistance = mLastX - xMove;</span><br><span class="line"></span><br><span class="line">                    mLastX = xMove;<span class="comment">//为xLast重新给定位置</span></span><br><span class="line">                    <span class="keyword">int</span> oldScrollX = getScrollX();<span class="comment">//oldScrollX 为负数</span></span><br><span class="line">                    <span class="keyword">float</span> scrollX = oldScrollX + xDistance;</span><br><span class="line">                    <span class="keyword">int</span> leftBound = behindContent.getLeftRelativeBound();</span><br><span class="line">                    <span class="keyword">int</span> rightBound = behindContent.getRightRelativeBound();</span><br><span class="line">                    <span class="keyword">if</span> (scrollX &lt; leftBound)</span><br><span class="line">                        scrollX = leftBound;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (scrollX &gt; rightBound)</span><br><span class="line">                        scrollX = rightBound;</span><br><span class="line">                    scrollTo((<span class="keyword">int</span>) scrollX, <span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                <span class="keyword">if</span> (isDraging) &#123;</span><br><span class="line">                    VelocityTracker velocityTracker = mVelocityTracker;</span><br><span class="line">                    velocityTracker.computeCurrentVelocity(<span class="number">1000</span>, maxVelocity);</span><br><span class="line">                    <span class="keyword">float</span> xUp = event.getX();</span><br><span class="line">                    <span class="keyword">int</span> velocity = (<span class="keyword">int</span>) VelocityTrackerCompat.getXVelocity(mVelocityTracker, <span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">int</span> flingDistance = (<span class="keyword">int</span>) (xUp - mDownX);</span><br><span class="line">                    mCurItem = checkPage(flingDistance, velocity);</span><br><span class="line">                    setCurPage(mCurItem);</span><br><span class="line">                    stopDragged();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">checkIsDraged</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//x方向移动距离</span></span><br><span class="line">        <span class="keyword">float</span> x = event.getX();</span><br><span class="line">        <span class="keyword">float</span> dx = Math.abs(mLastX - x);</span><br><span class="line">        <span class="keyword">if</span> (dx &gt; mDefaultSlop &amp;&amp; isTouchAllowed(event)) &#123;</span><br><span class="line">            beginDragged();</span><br><span class="line">            mLastX = event.getX();</span><br><span class="line">        &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(dx &gt; mDefaultSlop)</span> </span>&#123;</span><br><span class="line">            mIsUnableToDrag = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">checkPage</span><span class="params">(<span class="keyword">int</span> distance, <span class="keyword">int</span> velocity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> targetPage = mCurItem;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(distance) &gt; mFlingDistance &amp;&amp; Math.abs(velocity) &gt; minVelocity) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((distance &gt; <span class="number">0</span> &amp;&amp; velocity &gt; <span class="number">0</span>) || distance &gt; mFlingDistance) &#123;</span><br><span class="line">                targetPage += <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((distance &lt; <span class="number">0</span> &amp;&amp; velocity &lt; <span class="number">0</span> || distance &lt; -mFlingDistance)) &#123;</span><br><span class="line">                targetPage -= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Math.abs(distance) &gt; behindContent.getWidthOffset() / <span class="number">2</span> || Math.abs(velocity) &gt; maxVelocity) &#123;</span><br><span class="line">            <span class="keyword">if</span> (distance &gt; -behindContent.getSecondaryLeftRelativeBound()) &#123;</span><br><span class="line">                targetPage = <span class="number">2</span>;</span><br><span class="line">            &#125; <span class="function"><span class="keyword">else</span> <span class="title">if</span> <span class="params">(distance &lt; <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">                targetPage = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        targetPage = targetPage &gt; <span class="number">2</span> ? <span class="number">2</span> : targetPage;</span><br><span class="line">        targetPage = targetPage &lt; <span class="number">0</span> ? <span class="number">0</span> : targetPage;</span><br><span class="line">        <span class="keyword">return</span> targetPage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setCurPage</span><span class="params">(<span class="keyword">int</span> page)</span> </span>&#123;</span><br><span class="line">        page = getCurPageDimen(page);</span><br><span class="line">        <span class="keyword">if</span> (menuListener != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">switch</span> (mCurItem) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                    menuListener.onSlidingClose(mCurItem);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:menuListener.onSlidingOpen(mCurItem);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">int</span> sx = getScrollX();</span><br><span class="line">        <span class="keyword">int</span> dx = page - sx;</span><br><span class="line">        mScroller.startScroll(sx, <span class="number">0</span>, dx, <span class="number">0</span>, <span class="number">600</span>);</span><br><span class="line">        postInvalidate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">int</span> <span class="title">getCurPageDimen</span><span class="params">(<span class="keyword">int</span> page)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dest;</span><br><span class="line">        <span class="keyword">switch</span> (page) &#123;</span><br><span class="line">            <span class="comment">//main face</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                dest = behindContent.getRightRelativeBound();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">//secondary face</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                dest = behindContent.getSecondaryLeftRelativeBound();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">//all menuu face</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                dest = behindContent.getLeftRelativeBound();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                dest = 0;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="javadoc">/**</span><br><span class="line">     * 点击的区域是否可以被滑动</span><br><span class="line">     * 1.如果菜单打开,则菜单区域是不能被滑动的</span><br><span class="line">     *</span><br><span class="line">     *<span class="javadoctag"> @param</span> event 传入事件</span><br><span class="line">     *<span class="javadoctag"> @return</span> 点击的区域是否可以支持滑动</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isTouchAllowed</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">float</span> x = event.getX();</span><br><span class="line">        <span class="comment">//菜单打开</span></span><br><span class="line">        <span class="keyword">if</span> (isMenuOpen()) &#123;</span><br><span class="line">            <span class="keyword">return</span>  x &gt; -getCurPageDimen(mCurItem);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mScroller.computeScrollOffset()) &#123;</span><br><span class="line">            <span class="keyword">int</span> oldX = getScrollX();</span><br><span class="line">            <span class="keyword">int</span> x = mScroller.getCurrX();</span><br><span class="line">            <span class="keyword">int</span> y = mScroller.getCurrY();</span><br><span class="line">            <span class="keyword">if</span> (oldX != x) &#123;</span><br><span class="line">                scrollTo(x, y);</span><br><span class="line">            &#125;</span><br><span class="line">            invalidate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">openMenu</span><span class="params">(<span class="keyword">int</span> page)</span> </span>&#123;</span><br><span class="line">        setCurPage(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">closeMenu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        setCurPage(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">beginDragged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        isDraging = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setMenuListener</span><span class="params">(SlidingMenuView.onSlidingStatusChanged listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.menuListener = listener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">stopDragged</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        isDraging = <span class="keyword">false</span>;</span><br><span class="line">        mIsUnableToDrag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (mVelocityTracker != <span class="keyword">null</span>) &#123;</span><br><span class="line">            mVelocityTracker.recycle();</span><br><span class="line">            mVelocityTracker = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isMenuOpen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mCurItem == <span class="number">1</span> || mCurItem == <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">scrollTo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.scrollTo(x, y);</span><br><span class="line">        mScrollX = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setBehindContent</span><span class="params">(BehindViewContent behindContent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.behindContent = behindContent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/05/14/long-text-test/" data-title="long text test | Typer" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/05/14/one/"  title="one">
+ <strong>下一篇：</strong><br/> 
+ <span>one
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="Witype">Witype</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
