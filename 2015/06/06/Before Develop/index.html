@@ -130,8 +130,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/06/06/开发前的准备/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/06/开发前的准备/"></span>
+            <a href="/2015/06/06/Before Develop/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/06/Before Develop/"></span>
             </a>
           </span>
           
@@ -146,11 +146,11 @@
         
 
         
-          <h2 id="1、文档准备">1、文档准备</h2><ol>
-<li>需求分析：App主要面向用户群和要实现的主要功能；</li>
-<li>详细设计：这要是准对需求分析进行软件详细的结构设计，用何种方式能够最好最快的实现功能；</li>
-</ol>
-<h2 id="2、开发前期准备">2、开发前期准备</h2><ol>
+          <p>码字不易,转载请注明出处:<a href="http://blog.witype.com" target="_blank" rel="external">http://blog.witype.com</a></p>
+<hr>
+<h2 id="一、文档准备">一、文档准备</h2><h3 id="1-_需求分析">1. 需求分析</h3><p>App主要面向用户群和要实现的主要功能；</p>
+<h3 id="2-_详细设计">2. 详细设计</h3><p>这要是准对需求分析进行软件详细的结构设计，用何种方式能够最好最快的实现功能；</p>
+<h2 id="二、开发前期准备">二、开发前期准备</h2><ol>
 <li>版本控制：大多数时候都采用GIT；</li>
 <li>外部库的引用，采用最小的和最好的外部库；</li>
 <li>开发时间的计划表；</li>
@@ -158,7 +158,7 @@
 <li>分析技术难点，记录在开发记录文档中；<a id="more"></a>
 </li>
 </ol>
-<h2 id="3、开发过程中">3、开发过程中</h2><h3 id="一、项目结构搭建：项目包的构件采用如下方式">一、项目结构搭建：项目包的构件采用如下方式</h3><pre><code>-<span class="ruby">包名：域名.项目名称
+<h2 id="三、开发过程中">三、开发过程中</h2><h3 id="3-1-_项目结构搭建：">3.1. 项目结构搭建：</h3><h4 id="3-1-1_包构件">3.1.1 包构件</h4><pre><code>-<span class="ruby">包名：域名.项目名称
 </span>    -<span class="ruby"> activity               
 </span>        -<span class="ruby"> 模块名称(例如 carlist)
 </span>               ***Activity.java      Activity
@@ -170,13 +170,40 @@
 </span>               -<span class="ruby"> customview         自定义视图
 </span>               -<span class="ruby"> fragment            碎片视图
 </span>    -<span class="ruby"> modle                        模型(因为模型有继承关系，故放在同一包下)</span>
-</code></pre><p> 注意：<br></p>
+</code></pre><p> 注意:</p>
 <ol>
-<li>包名都应该采用小写的形式；<br></li>
-<li>不是全部都应按照以上的方式，当某些 adapter为全局的时候可以在外部定义一个adapter包；<br></li>
-<li>应采用耦合度较低的包名，每个包只实现它特定的功能，或是特定类型的视图，遵循android包名规则</li>
+<li>包名都应该采用小写的形式.</li>
+<li>不是全部都应按照以上的方式，当某些 adapter为全局的时候可以在外部定义一个adapter包.</li>
+<li>应采用耦合度较低的包名，每个包只实现它特定的功能，或是特定类型的视图，遵循android包名规则.</li>
 </ol>
-<h3 id="二、">二、</h3>
+<h3 id="3-2-遵循Android开发规范">3.2.遵循Android开发规范</h3><h4 id="3-2-1-_分辨率对应DPI与界面尺寸">3.2.1. 分辨率对应DPI与界面尺寸</h4><h5 id="DPI(Supporting_Multiple_Screens)">DPI(<a href="http://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="external">Supporting Multiple Screens</a>)</h5><ul>
+<li>ldpi (low) ~120dpi</li>
+<li>mdpi - HVGA  480*320 (Half-size VGA) ~160dpi</li>
+<li>hdpi - WVGA  800*480 (Wide VGA) ~240dpi</li>
+<li>nohpi - 图片将不会被自动适配,以原始大小显示</li>
+<li>xhdpi - 720P ( High Definition) ~320dpi</li>
+<li>xxhdpi - 1080P ( High Definition) ~480dpi</li>
+<li>xxxhdpi - 1080P+ ~640dpi<h5 id="尺寸">尺寸</h5></li>
+<li>系统状态栏 staturbar -  8dp</li>
+<li>actionbar/toolbar - ?attr/actionBarSize<br>?代表的是系统attr属性,它是系统配置的高度,相当于android定义了这个属性让每一款设备去设置它具体的值.</li>
+<li><p>navigationbar - 导航栏 </p>
+<h4 id="3-2-2-_屏幕适配的注意事项">3.2.2. 屏幕适配的注意事项</h4><h5 id="1-_AndroidManifest-xml配置"><strong>1. AndroidManifest.xml配置</strong></h5><h6 id="android:anyDensity=”boolean”(默认为true)"><strong>android:anyDensity=”boolean”(默认为true)</strong></h6></li>
+<li><p><strong>true</strong>:应用程序安装在不同屏幕密度的设备上时,程序户自动的搜寻在图片资源文件夹中的图片,找到和当前木最为接近的分辨率的图片.</p>
+</li>
+<li><strong>false</strong>:和true相反,这种情况下应用程序只会在资源文件中找与当前屏幕密度相对应的图片,及时在其他分辨率资源文件夹中有这个文件也不会使用.</li>
+</ul>
+<hr>
+<h5 id="2-_横屏竖屏"><strong>2. 横屏竖屏</strong></h5><h6 id="drawable/mipmap"><strong>drawable/mipmap</strong></h6><ul>
+<li>默认 drawable-hdpi</li>
+<li>横屏 drawable-land-hdpi</li>
+<li>竖屏 drawable-port-hdpi<h6 id="layout"><strong>layout</strong></h6></li>
+<li>默认 layout</li>
+<li>横屏 layout-land</li>
+<li>竖屏 layout-port</li>
+</ul>
+<p>适配不同的屏幕分辨率<br>通过指定分辨率实现:例如layout-480x800;</p>
+<p>未完待续</p>
+
         
       </div>
     
@@ -197,11 +224,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2015/06/06/Hello!/">Hello!</a>
+              
             </div>
 
             <div class="post-nav-next post-nav-item">
-              
-                <a href="/2015/06/06/Hello!/">Hello!</a>
               
             </div>
           </div>
@@ -218,8 +245,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/06/06/开发前的准备/"
-             data-title="Android App 开发前的准备" data-url="http://witype.com/2015/06/06/开发前的准备/">
+        <div class="ds-thread" data-thread-key="2015/06/06/Before Develop/"
+             data-title="Android App 开发前的准备" data-url="http://witype.com/2015/06/06/Before Develop/">
         </div>
 
       
@@ -302,7 +329,7 @@
         <div class="post-toc">
           
           
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、文档准备"><span class="nav-number">1.</span> <span class="nav-text">1、文档准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、开发前期准备"><span class="nav-number">2.</span> <span class="nav-text">2、开发前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、开发过程中"><span class="nav-number">3.</span> <span class="nav-text">3、开发过程中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、项目结构搭建：项目包的构件采用如下方式"><span class="nav-number">3.1.</span> <span class="nav-text">一、项目结构搭建：项目包的构件采用如下方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、"><span class="nav-number">3.2.</span> <span class="nav-text">二、</span></a></li></ol></li></ol></div>
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、文档准备"><span class="nav-number">1.</span> <span class="nav-text">一、文档准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_需求分析"><span class="nav-number">1.1.</span> <span class="nav-text">1. 需求分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_详细设计"><span class="nav-number">1.2.</span> <span class="nav-text">2. 详细设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、开发前期准备"><span class="nav-number">2.</span> <span class="nav-text">二、开发前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、开发过程中"><span class="nav-number">3.</span> <span class="nav-text">三、开发过程中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-_项目结构搭建："><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 项目结构搭建：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1_包构件"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 包构件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-遵循Android开发规范"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.遵循Android开发规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-_分辨率对应DPI与界面尺寸"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. 分辨率对应DPI与界面尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DPI(Supporting_Multiple_Screens)"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">DPI(Supporting Multiple Screens)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#尺寸"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">尺寸</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-_屏幕适配的注意事项"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. 屏幕适配的注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_AndroidManifest-xml配置"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">1. AndroidManifest.xml配置</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#android:anyDensity=”boolean”(默认为true)"><span class="nav-number">3.2.2.1.1.</span> <span class="nav-text">android:anyDensity=”boolean”(默认为true)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_横屏竖屏"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">2. 横屏竖屏</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#drawable/mipmap"><span class="nav-number">3.2.2.2.1.</span> <span class="nav-text">drawable/mipmap</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#layout"><span class="nav-number">3.2.2.2.2.</span> <span class="nav-text">layout</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
           
         </div>
         <div class="post-toc-indicator-bottom post-toc-indicator"></div>
