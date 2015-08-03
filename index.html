@@ -122,8 +122,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/08/02/Before Android teaching project/">
-                Android教程系列文章-写在前面
+              <a class="post-title-link" href="/2015/08/03/Before Android teaching project/">
+                未命名
               </a>
             
           
@@ -133,22 +133,11 @@
       <div class="post-meta">
         <span class="post-time">
           
-            发表于 2015-08-02
+            发表于 2015-08-03
           
         </span>
 
         
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; 分类于
-              
-                <a href="/categories/Teaching/">Teaching</a>
-
-                
-                
-
-              
-            </span>
           
         
 
@@ -156,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/08/02/Before Android teaching project/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/02/Before Android teaching project/"></span>
+            <a href="/2015/08/03/Before Android teaching project/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/03/Before Android teaching project/"></span>
             </a>
           </span>
           
@@ -173,12 +162,51 @@
 
         
           
-            <p><img src="http://7xku95.com1.z0.glb.clouddn.com/Colorful-Android-Club.jpg" alt=""><br>
-            <div class="post-more-link text-center">
-              <a class="btn" href="/2015/08/02/Before Android teaching project/#more">
-                阅读全文 &raquo;
-              </a>
-            </div>
+            <h1 id="综述">综述</h1><p>    工欲善其事，必先利其器，那么android的开发我们需要掌握如下基本技能，一是xml，xml在android中主要用于界面的布局，通过xml对控件的声明和层次的叠加就可以做出基本的几面。二是java，java只需要掌握基本的j2se就足够，例如面向对象基本的概念和接口定义与使用。三是良好的英语能力，开发文档永远是学习技能最好的平台，通过国内百度的搜索结果你会发现大部分只是转载和未标明出处的抄袭，会异常的痛苦。然而通过android开发文档和搜索Google的结果大部分全是英文，因此，android学习需要有良好的英语能力。<br>    Xml在android中的主要应用于布局，但是并不限于布局，同时也能够定义样式和自定义属性。在样式的定义上有点类似css的设计，通过外部的文件定义通用的界面效果。自定义属性更多的体现在复杂的自定义控件中，通过在xml定义自己的属性，然后在自定义控件中获取其值以实现不同的效果。随着android版本的不断提高，xml在android程序的设计中的重要性也在不断的增强，在某些特许的情况下使用xml能够节省非常多的java代码，而且使用它还会比直接使用代码更具有扩张性和通用性。例如在定义动画的过程中用xml属性去代替java代码的set和get方法就会显得非常的直观而且有效，在另外的项目中我只需复制整个xml文件而不是在java代码中复制代码段。当然，更多的使用技巧需要在项目实践中不断的跳坑然后爬坑才能真正体会，这里我就不再累述。<br>    良好的面向对象语言基础，java编程语言在面向对象编程语言中是使用率一直名列前茅，这是有原因的，其一在于java作为高级的开发语言很好的提现了面向对象，在整个开发过程中使用的都是面向对象。其二是很强的可扩张性，从最初的j2me到现在的j2ee都很好的说明了这一点。一处编译，随处运行可不是随口说出来的。其三在于高度开放的源代码，当然源代码的开放并不意味着我们要去研究java本身的源代码而是第三方开放的源代码，通过使用第三方库能够很好的优化本身的项目同时通过分析第三方的代码能够提升自我的技术能力。</p>
+<h1 id="合适的开发环境">合适的开发环境</h1><h2 id="IDE">IDE</h2><p>    到目前为止开发android的IDE当属Eclipse，Eclipse在java开发中已经较为稳定和高效，而且支持非常多的插件搭配Google提供的ADT能够很好的进行android程序的开发。但很不幸的是，Google已经放弃了对Eclipse中ADT插件的维护，转而提倡开发者们使用新的IDE平台Android Studio。Android Studio的一大亮点在于其对界面布局预览的多种界面实时显示，同时可以查看当前界面的不同分辨率设备中的预览效果。这种预览带来的好处便是提高的开发效率而且非常符合界面的设计的思维逻辑：所见即所得。除了上面提到的功能外Android Studio的项目采用当下比较流行的自动化项目构建，因此从Eclipse转到Android Studio需要一定的学习成本。<br>    虽然Google停止了对Eclipse的维护但是并不意味着Eclipse失去了失去编写android程序的能力。现有的ADT插件已经足够完善和易用，作为新手，可以使用Eclipse作为学习android的敲门砖，其一在于使用它学习android遇到的问题较Android Studio容易解决，而且百度也有足够多的学习资料供你使用，其二在于对于新手使用Android Studio学习android的开发将会有许多IDE的问题，而这类问题在百度上是较难找到解决方案的。第三是Android Studio的使用是需要翻墙的，没必要为自己学习增加难度。</p>
+<blockquote>
+<p>长江后浪推前浪，前浪死在沙滩上。时代在发展，技术在进步。新的事物总是值得学习的。</p>
+</blockquote>
+<p>    Android Studio以其优秀给构架和良好的支持终将成为Eclipse的终结者。</p>
+<h2 id="VCS">VCS</h2><p>    版本控制在项目开发中尤其的重要，即便是一个人开发的项目也是需要使用到版本控制，无论是版本回滚还是版本迭代，使用版本控制将会使你的开发变得非常的有趣。当下较为流程的版本控制有SVN和GIT。SVN以其使用便捷、操作简单、多人项目容易管理、符合一般项目管理的思维受到大部分人的青睐。GIT因为其具有较高的学习成本使用的人相较于SVN要少，但是也应该看到GIT在项目管理中比SVN具有更大的优势。可通过如下网站了解更多信息。<br><a href="http://blog.csdn.net/cyzero/article/details/7245075" target="_blank" rel="external">Git 的优势</a><a href="http://git.oschina.net/progit/" target="_blank" rel="external">Pro Git（中文版）</a><br><a href="http://git.oschina.net" target="_blank" rel="external">开源中国代码库</a><a href="http://github.com" target="_blank" rel="external">GitHub</a></p>
+<h1 id="良好的习惯">良好的习惯</h1><h2 id="记录">记录</h2><blockquote>
+<p>好记性不如烂笔头。</p>
+</blockquote>
+<ul>
+<li>文章</li>
+<li>开发者博客</li>
+<li>开源网站</li>
+<li>开发者平台</li>
+<li>开源项目</li>
+<li>设计类网站</li>
+<li>其他<br>    大体来说记录的内容包含以上几类，但是并不限于上面所列出的内容。<h2 id="跨界">跨界</h2>    跨界在Android开发中可以简单的理解为不仅是学习android本身的技术点而且还需要学习和android紧密相联的技术，例如对Photoshop、CorelDraw等。因为在项目开发的过程中需要考虑到适配的问题，在android中适配的问题被无限放大了，UI设计师的开发只会基于某一尺寸的屏幕，你可以要求UI设计师为你导出目标尺寸分辨率的图片，但是如果对每一种尺寸的设备都进行如此重复的工作，对于UI设计师的工作量来说将是一场灾难。所以自身掌握图片的处理技能就显得尤为重要，技多不压身，学习的更多并不会有坏处。<br>    关联技术学习只是一方面，更重要的方面是对android设计理念的学习，追本溯源才是核心。所有的产品最初的雏形都来自思想，而优秀的产品来自于精心的思考，设计只是对思想观念的表达。Android的设计理念可通过以下网站了解详情。</li>
+<li><a href="http://developer.android.com/training/material/index.html" target="_blank" rel="external">Android Matreial Design</a></li>
+<li><a href="http://design.1sters.com/" target="_blank" rel="external">Marieial Design 中文版</a><img src="http://7xku95.com1.z0.glb.clouddn.com/matreial_design_blue.jpg" alt=""></li>
+<li><a href="http://www.iconfont.cn/" target="_blank" rel="external">阿里妈妈图标库</a></li>
+<li><a href="http://www.materialpalette.com/" target="_blank" rel="external">Android5.0画板</a></li>
+<li><a href="http://huaban.com/boards/13638778/?md=banner35" target="_blank" rel="external">设计规范指南</a><h1 id="准备">准备</h1>    通过上述章节的描述，旨在提高android学习的进度，毕竟弯路不是每个人都需要去走一遍。接下来的部分将具体阐述如何学习android。<br>    在本节中你需要搭建好android的开发环境，对android的SDK进行初步的了解以及如何访问Google服务器。<h2 id="JDK&amp;SDK">JDK&amp;SDK</h2><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK 下载</a><br><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">SDK(收集整理Android开发所需的Android SDK、开发中用到的工具、Android开发教程、Android设计规范，免费的设计素材等。)</a><blockquote>
+<p>SDK目录接口<br>├<strong>Android-SDK</strong><br>  ├<strong>build-tools</strong> #可以理解为项目构建工具<br>  ├<strong>docs</strong>#<a href="http://developer.android.com/" target="_blank" rel="external">http://developer.android.com/</a>网页的拷贝<br>  ├<strong>extras</strong> #Google开发包<br>  ├<strong>platforms</strong>#各个android版本开发包<br>  ├<strong>platform-tools</strong>#版本有区别的工具<br>  ├<strong>samples</strong>#Demo<br>  ├<strong>sources</strong>#源代码，主要用于在IDE中查看源代码<br>  ├<strong>temp</strong>#下载临时文件夹<br>  ├<strong>tools</strong>#通用的工具<br>      ……<br>      draw9patch.bat#点9图片处理工具<br>      hierarchyviewer.bat#界面层次结构浏览工具<br>      ……<br>    <strong>AVD Manager.exe</strong><br>    <strong>SDK Manager.exe</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>注意：</p>
+<ol>
+<li>samples&amp;sources里面存放的都是源代码，samples文件夹中保存了的是每个版本中提供出来的新功能的使用事例，里面的demo代码都是比较通俗易懂，适合在已经熟悉了android基本技术后去研究。</li>
+<li>sources里面存放的是各个版本android源代码，非常具有研究价值，但是技术要求较高。</li>
+<li>在android18(4.3)后samples中的项目采用的是Android Studio构件的，使用Eclipse的无法通过编译。</li>
+<li>使用SDK Manager需要翻墙<a href="http://freegreenvpn.com/servers/index.php" target="_blank" rel="external">(免费VPN)</a>,在下载列表中只需选择platform tool和sources即可，如果不下载sources不会影响编写程序，但是无法在IDE中查看类的源码。</li>
+<li>tools文件夹中保存的工具非常实用。<a href="http://blog.csdn.net/aikongmeng/article/details/17169995" target="_blank" rel="external">draw9patch.bat点9图片制作</a>，<a href="http://blog.csdn.net/ddna/article/details/5527072" target="_blank" rel="external">被忽略的UI检视利器：Hierarchy Viewer</a>&gt;</li>
+<li>Hierarchy Viewer在android18(4.3)后不支持从文件夹中直接打开，而只能通过在Android Studio中打开。<h2 id="Eclipse+ADT">Eclipse+ADT</h2>    ADT Bundle包含了Eclipse、ADT插件和SDK Tools，是已经集成好的IDE，只需安装好Jdk即可开始开发，推荐初学者下载ADT Bundle，不用再折腾开发环境。<br><a href="http://pan.baidu.com/s/1dDGM8oD" target="_blank" rel="external">ADT Bundle 32bit</a><br><a href="http://pan.baidu.com/s/1mgn2dOs" target="_blank" rel="external">ADT Bundle 64bit</a><br><a href="http://pan.baidu.com/s/1eQm5zto" target="_blank" rel="external">Android Studio 1.3</a><h2 id="访问Google">访问Google</h2>    我们访问Google的服务器无非是想获得服务器中数据，获得Google服务器中的数据我们可以采用两种方式，一种是使用VPN软件，一种是使用国内的镜像服务器。使用VPN的好处是速度有保障，链接稳定，而且能够获得最新的资源，但是一般都是需要收费的。使用国内镜像服务器是完全免费的，而且链接速度很快，但镜像中的数据有可能不是最新的数据，因此各有利弊，请自由选择。</li>
+</ol>
+<ul>
+<li>使用VPN<br><a href="http://vpno.vpno.net/windows-7-pptp-l2tp-settings-tutorial/" target="_blank" rel="external">Windows 7 PPTP/L2TP设置教程</a><br><a href="http://free-vpn.wwdhz.com/" target="_blank" rel="external">VPN帐号（每1小时自动断开及更新密码）</a><br><a href="http://freegreenvpn.com/servers/index.php" target="_blank" rel="external">国外免费VPN</a></li>
+<li>使用镜像<br><a href="http://www.androiddevtools.cn/" target="_blank" rel="external">镜像服务器列表</a><h1 id="结语">结语</h1>    此部分内容到此就告一段落了，在后续的一段时间里我将持续的更新文章。在后续的文章中我将通过从几个层面来分别介绍android，从基础到进阶，由浅至深。<br>    本文的目标受众是具有一定编程基础和从其他平台转到android来的同学，因为自身对程序设计具有一定的基础，所有对于一部分问题并没有深究，而是通过提出思路的方式供大家自己思考。在后续的文章中将不会出现大篇幅的代码，较多采用的形式是代码段，但是我会给出相关的文章链接供大家参考。这样做的目的是因为网络上已经有许多这些方面的代码，通过百度就能够找到很满意的回答(注意筛选),这里就不必在进行累述。另外，本文更多的注重的是一种理论学习，知其然只是一方面，知其所以然才是重点。<blockquote>
+<p>授之以鱼不如授之以渔</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="http://blog.witype.com" target="_blank" rel="external">码字不易，转载请注明出处</a><br><a href="http://blog.witype.com" target="_blank" rel="external">博客:http://blog.witype.com</a><br><a href="http://www.jianshu.com/p/f2c8fb7b56a7" target="_blank" rel="external">简书:http://www.jianshu.com/p/f2c8fb7b56a7</a></p>
+
           
         
       </div>
