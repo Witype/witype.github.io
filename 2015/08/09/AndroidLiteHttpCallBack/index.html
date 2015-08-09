@@ -1,0 +1,640 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Android,LiteHttp," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="LiteHttp是一款简单、智能、灵活的HTTP框架库，它在请求和响应层面做到了全自动构建和解析，主要用于Android快速开发。借助LiteHttp你只需要一行代码即可完美实现http连接，它全面支持GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS 和 PATCH八种基本类型。LiteHttp能将Java Model转化为http请求参数，也能将响应的js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android网络通信教程-自定义LiteHttp回调">
+<meta property="og:url" content="http://witype.com/2015/08/09/AndroidLiteHttpCallBack/index.html">
+<meta property="og:site_name" content="Witype">
+<meta property="og:description" content="LiteHttp是一款简单、智能、灵活的HTTP框架库，它在请求和响应层面做到了全自动构建和解析，主要用于Android快速开发。借助LiteHttp你只需要一行代码即可完美实现http连接，它全面支持GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS 和 PATCH八种基本类型。LiteHttp能将Java Model转化为http请求参数，也能将响应的js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android网络通信教程-自定义LiteHttp回调">
+<meta name="twitter:description" content="LiteHttp是一款简单、智能、灵活的HTTP框架库，它在请求和响应层面做到了全自动构建和解析，主要用于Android快速开发。借助LiteHttp你只需要一行代码即可完美实现http连接，它全面支持GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS 和 PATCH八种基本类型。LiteHttp能将Java Model转化为http请求参数，也能将响应的js">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Android网络通信教程-自定义LiteHttp回调 | Witype </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Witype</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Android网络通信教程-自定义LiteHttp回调
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-08-09T12:10:57+08:00" content="2015-08-09">
+            2015-08-09
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Android/" itemprop="url" rel="index">
+                  <span itemprop="name">Android</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/09/AndroidLiteHttpCallBack/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/AndroidLiteHttpCallBack/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><blockquote>
+<p>LiteHttp是一款简单、智能、灵活的HTTP框架库，它在请求和响应层面做到了全自动构建和解析，主要用于Android快速开发。借助LiteHttp你只需要一行代码即可完美实现http连接，它全面支持GET, POST, PUT, DELETE, HEAD, TRACE, OPTIONS 和 PATCH八种基本类型。LiteHttp能将Java Model转化为http请求参数，也能将响应的json语句智能转化为Java Model，这种全自动解析策略将节省你大量的构建请求、解析响应的时间。并且，你能自己继承重新实现Dataparser这个抽象类并设置给Request，来将http原始的inputstream转化为任何你想要的东西。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="解决问题">解决问题</h1><p>在客户端与服务端据交互模式中,大部分采用的是json数据格式,而且json数据中必定包含的数据格式有以下两个.<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"error"</span>: <span class="number">0</span>, <span class="comment">//错误码 0 数据访问成功且没有错误,非0表示访问服务器成功但是错误</span></span><br><span class="line">  <span class="string">"message"</span>: <span class="string">"Hello World"</span>, <span class="comment">//消息</span></span><br><span class="line">  <span class="attribute">...</span><span class="attribute">...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果客户端访问服务器获取数据,服务器响应并处理返回<a href="http://www.bejson.com/knownjson/httpstate/" target="_blank" rel="external">Http的状态</a>必定或是200(成功).这是毋庸置疑的,而且也是我们无法改变的.而我们需要做到的就是当服务器成功处理请求并且返回数据时,只有在状态码为200且error=0的时候调用指定接口,返回非0的时候调用另外的接口.当然总能在成功的时候回调成功的接口.</p>
+<p>在之前的项目中,我们在回调接口总是会判断返回数据的状态(error),这样做能达到效果,但是每次都复制同样的代码段在同一位置,就显得很麻烦.因此采用统一的结果处理方法显得非常的有必要.</p>
+<h1 id="思路">思路</h1><p>LiteHttp中提供了两个回调类,一个是GlobalHttpListener,另一个是HttpListener<data>,前者是针对整个项目中要用到的统一的回调方法,用于统一处理请求结构.后者处理每一个请求的具体的操作.互相不影响.因为LiteHttp中回调使用的的类,而非接口,所在如果使用继承是肯定不行的.因此我们需要定义一个和HttpListener 一模一样的接口用于回调.主要包含以下几个类.</data></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 同一Http操作类 */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">HttpOperation&lt;T&gt;</span>&#123;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* http回调接口*/</span></span><br><span class="line">public interface <span class="type">GlobalHttpCallBack</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 全局Http回调类*/</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyGlobalHttpListener</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">GlobalHttpListener</span>&#123;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 局部Http回调类*/</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyHttpListener&lt;Data&gt;</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">HttpListener&lt;Data&gt;</span>&#123;</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>使用到的请求类<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 所有请求的父类 */</span></span><br><span class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractRequest&lt;T&gt;</span> &#123;</span>...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 数据以String返回 */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">StringRequest</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AbstractRequest&lt;String&gt;</span>&#123;</span>...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 数据以提供的实体类返回  */</span></span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">JsonRequest&lt;T&gt;</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AbstractRequest&lt;T&gt;</span>&#123;</span>...&#125;</span><br></pre></td></tr></table></figure></p>
+<p>好了,接下来就准备好面对代码轰炸吧!</p>
+<h1 id="代码">代码</h1><p>我们通过继承以上GlobalHttpListener和HttpListener两个类,然后重写两个方法(本来也是空的),达到调用新的方法,从而达到省去每次检查的目的.你可以定义自己符合程序逻辑的回调方法.<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*  GlobalHttpListener&amp;HttpListener */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Object s, Response&lt;?&gt; response)</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(HttpException e, Response&lt;?&gt; response)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>BaseEntity 实体类</strong><br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="javadoc">/**</span><br><span class="line"> * Created by Typer_work on 2015/8/4.</span><br><span class="line"> *</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseEntity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="keyword">error</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String desc;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function">String <span class="title">getError</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">error</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setError</span><span class="params">(String <span class="keyword">error</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.<span class="keyword">error</span> = <span class="keyword">error</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function">String <span class="title">getDesc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">setDesc</span><span class="params">(String desc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.desc = desc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>GlobalHttpListener 全局Http操作回调类</strong>,MyGlobalHttpListener 和MyHttpListener一模一样.优化的事情就交给你们自己了.<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> Created by Typer on 2015/7/19.</span><br><span class="line"> <span class="keyword">*</span> 通过在onSuccess判断数据从而调用不同的方法,省去在每个回调接口中进行判断.</span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">public class MyGlobalHttpListener extends GlobalHttpListener &#123;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 成功</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param s</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    <span class="comment">@Override</span></span><br><span class="line">    public void onSuccess(Object s, Response<span class="variable">&lt;?&gt;</span> response) &#123;</span><br><span class="line">        /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">         <span class="keyword">*</span> 通过这个方式确认返回的对象为我们指定的实体,因为有可能你使用的是非JsonRequest<span class="variable">&lt;T&gt;</span></span><br><span class="line">         <span class="keyword">*</span>/</span><br><span class="line">        if (s instanceof BaseEntity)&#123;</span><br><span class="line">            BaseEntity ss = (BaseEntity) s;</span><br><span class="line">            if (!TextUtils.equals(ss.error, <span class="string">"0"</span>)) &#123;</span><br><span class="line">                onSuccessZero(s, response);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                onSuccessNoZero(s,response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 成功且error==0.</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param s</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    public void onSuccessZero(Object s, Response<span class="variable">&lt;?&gt;</span> response) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 成功且error!=0.</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param s</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    public void onSuccessNoZero(Object s, Response<span class="variable">&lt;?&gt;</span> response) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> CRSF过期</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param e</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param code</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    public void onExpire(HttpException e, int code, Response<span class="variable">&lt;?&gt;</span> response) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 失败</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param e</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    <span class="comment">@Override</span></span><br><span class="line">    public void onFailure(HttpException e, Response<span class="variable">&lt;?&gt;</span> response) &#123;</span><br><span class="line">        int code = response.getHttpStatus().getCode();</span><br><span class="line">        if (code == 500) &#123;</span><br><span class="line">            onExpire(e, code, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>HttpOperation</strong><br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="javadoc">/**</span><br><span class="line"> * Created by Typer on 2015/7/19.</span><br><span class="line"> * 封装了LiteHttp</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpOperation</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_TIME_OUT = <span class="number">10</span> * <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> LiteHttp liteHttp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> GlobalHttpCallBack globalHttpCallBack;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HttpOperation http;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span><br><span class="line">	* 需要在实例化HttpOperation的时候实现GlobalHttpCallBack接口</span><br><span class="line">	* 在HttpOperation中实例化MyGlobalHttpListener用于回调.</span><br><span class="line">	*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HttpOperation</span><span class="params">( GlobalHttpCallBack globalHttpCallBack)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.globalHttpCallBack = globalHttpCallBack;</span><br><span class="line">        initLiteHttp();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="javadoc">/**</span><br><span class="line">     * 全局的Http访问回调方法</span><br><span class="line">     * 注:</span><br><span class="line">     *      全局访问的作用在于对某些界面的处理</span><br><span class="line">     */</span></span><br><span class="line">    <span class="annotation">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="keyword">private</span> MyGlobalHttpListener listener = <span class="keyword">new</span> MyGlobalHttpListener() &#123;</span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(Object s, Response&lt;?&gt; response)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onSuccess(s,response);</span><br><span class="line">            <span class="keyword">if</span> (globalHttpCallBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">                globalHttpCallBack.onSuccess(s, response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(HttpException e, Response&lt;?&gt; response)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onFailure(e,response);</span><br><span class="line">            <span class="keyword">if</span> (globalHttpCallBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">                globalHttpCallBack.onFailure(e,response.getHttpStatus().getCode(), response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onSuccessNoZero</span><span class="params">(Object s, Response&lt;?&gt; response)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (globalHttpCallBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">                globalHttpCallBack.onSuccessNoZero(s, response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="annotation">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onExpire</span><span class="params">(HttpException e, <span class="keyword">int</span> code, Response&lt;?&gt; response)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (globalHttpCallBack != <span class="keyword">null</span>) &#123;</span><br><span class="line">                globalHttpCallBack.onExpire(e, response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="javadoc">/**</span><br><span class="line">     * 获取网络数据</span><br><span class="line">     *<span class="javadoctag"> @param</span> requset 请求</span><br><span class="line">     *<span class="javadoctag"> @param</span> &lt;T&gt; 基本请求</span><br><span class="line">     *<span class="javadoctag"> @return</span> 请求对象</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> &lt;T <span class="keyword">extends</span> AbstractRequest&lt;T&gt;&gt; <span class="function">T <span class="title">executeSync</span><span class="params">(T requset)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (liteHttp == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//TODO INIT</span></span><br><span class="line">        &#125;</span><br><span class="line">        liteHttp.executeAsync(requset);</span><br><span class="line">        <span class="keyword">return</span> requset;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>GlobalHttpListener</strong><br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span> Created by Typer on 2015/7/18.</span><br><span class="line"> <span class="keyword">*</span> 全局的Http访问回调接口</span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">public interface GlobalHttpCallBack &#123;</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 数据获取成功的回调</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param o 对象</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response 结果</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    void onSuccess(Object o, Response response);</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 返回的状态为非0则调用此方法</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param o</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    void onSuccessNoZero(Object o, Response response);</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 失败的全局回调</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param e</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param code</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    void onFailure(HttpException e, int code, Response response);</span><br><span class="line"></span><br><span class="line">    /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">     <span class="keyword">*</span> 会话已经过期的对调</span><br><span class="line">     <span class="keyword">*</span> code == 500</span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param e 对象</span></span><br><span class="line">     <span class="keyword">*</span> <span class="comment">@param response 结果</span></span><br><span class="line">     <span class="keyword">*</span>/</span><br><span class="line">    void onExpire (HttpException e, Response<span class="variable">&lt;?&gt;</span> response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="使用">使用</h1><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * StringRequest可照常使用</span><br><span class="line"> */</span><br><span class="line"> <span class="keyword">public</span> void getCRSF() &#123;</span><br><span class="line">    <span class="built_in">String</span> url = DataUtils.URL.getUrl(DataUtils.URL.getCRSF);</span><br><span class="line">    StringRequest <span class="built_in">request</span> = <span class="keyword">new</span> StringRequest(url);</span><br><span class="line">    <span class="built_in">request</span>.setMethod(HttpMethods.<span class="keyword">Get</span>);</span><br><span class="line">    <span class="built_in">request</span>.setHttpListener(<span class="keyword">new</span> MyHttpListener&lt;<span class="built_in">String</span>&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> void onFailure(HttpException e, <span class="built_in">Response</span>&lt;<span class="built_in">String</span>&gt; <span class="built_in">response</span>) &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> void onSuccess(<span class="built_in">String</span> s, <span class="built_in">Response</span>&lt;<span class="built_in">String</span>&gt; <span class="built_in">response</span>) &#123;</span><br><span class="line">		        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    mOperation.executeSync(<span class="built_in">request</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line"><span class="keyword">public</span> void signIn(final <span class="built_in">String</span> userName,final <span class="built_in">String</span> userPwd) &#123;</span><br><span class="line">    <span class="built_in">String</span> url = DataUtils.URL.getUrl(DataUtils.URL.loginCheck);</span><br><span class="line">    JsonRequest&lt;LoginEntity&gt; <span class="built_in">request</span> = <span class="keyword">new</span> JsonRequest&lt;LoginEntity&gt;(url,LoginEntity.<span class="keyword">class</span>);</span><br><span class="line">    <span class="built_in">request</span>.setMethod(HttpMethods.Post);</span><br><span class="line">    <span class="built_in">request</span>.addUrlParam(<span class="string">"key"</span>,<span class="string">"1"</span>)</span><br><span class="line">    <span class="built_in">request</span>.setHttpListener(<span class="keyword">new</span> MyHttpListener&lt;LoginEntity&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> void onSuccessOk(LoginEntity s, <span class="built_in">Response</span>&lt;LoginEntity&gt; <span class="built_in">response</span>) &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        <span class="keyword">public</span> void onExpire(HttpException e, <span class="built_in">int</span> code, <span class="built_in">Response</span>&lt;LoginEntity&gt; <span class="built_in">response</span>) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    mOperation.executeSync(<span class="built_in">request</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="结语">结语</h1><p>本文的方法之是简单是继承了LiteHttp中的回调类然后重写自己的方法,其基本的流程还是遵循LiteHttp,在实现的过程中你可以根据项目的具体需求增加自己的方法.其次,使用接口回调是为了在实现HttpOperation Http操作类中避免使用继承.因为本身它需要继承其他的类,无法多继承.</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/LiteHttp/" rel="tag">#LiteHttp</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/09/AndroidTutorial-Base/" rel="prev">Android教程系列文章-android基础</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/02/AndroidTutorial-WriteInFront/" rel="next">Android教程系列文章-写在前面</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/08/09/AndroidLiteHttpCallBack/"
+                   data-title="Android网络通信教程-自定义LiteHttp回调" data-url="http://witype.com/2015/08/09/AndroidLiteHttpCallBack/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Witype" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Witype</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Witype" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/9dbea69b2264/latest_articles" target="_blank">JianShu</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#解决问题"><span class="nav-number">1.</span> <span class="nav-text">解决问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2014 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Witype</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"witype"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
